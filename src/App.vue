@@ -1,36 +1,55 @@
-<script setup>
-import { RouterView } from 'vue-router'
-</script>
+<script>
+export default {
+  data() {
+    return {
+      foo:"tert",
+      res:"",
+    }
+  },
+  methods: {
+    concat(){
 
+    },
+    greet(event) {
+    // `this` inside methods points to the current active instance
+    alert(`Hello ${event.target.name}!`)
+    // `event` is the native DOM event
+    if (event) {
+      foo += foo + event.target.name;
+      return event.target.tagName
+    }
+  }
+  }
+}
+</script>
 <template>
       <h1>Calcul</h1>
-    <div v-bind:id="app">
-        <p>{{foo}}</p>
-        <button class="btn" name="1">1</button>
-        <button class="btn" name="2">2</button>
-        <button class="btn" name="3">3</button>
+    <div id="app">
+        {{ foo }}
+        <button class="btn" @click="greet" name="1">1</button>
+        <button class="btn" @click="2" name="2">2</button>
+        <button class="btn" @click="3" name="3">3</button>
         </div>
         <div>
-        <button class="btn" name="4">4</button>
-        <button class="btn" name="5">5</button>
-        <button class="btn" name="6">6</button>
+        <button class="btn" @click="4" name="4">4</button>
+        <button class="btn" @click="5" name="5">5</button>
+        <button class="btn" @click="6" name="6">6</button>
         </div>
         <div>
-        <button class="btn" name="7">7</button>
-        <button class="btn" name="8">8</button>
-        <button class="btn" name="9">9</button>
+        <button class="btn" @click="" name="7">7</button>
+        <button class="btn" @click="" name="8">8</button>
+        <button class="btn" @click="" name="9">9</button>
         </div>
-        <button class="btn" name="0">0</button>
-        <button class="btn" name="+">+</button>
-        <button class="btn" name="-">-</button>
-        <button class="btn" name="/">/</button>
-        <button class="btn" name="%">%</button>
-        <button class="btn" name=".">.</button>
-        <button class="btn" name="=">=</button>
-        <button class="btn" name="C">C</button>
+        <button class="btn" @click="" name="0">0</button>
+        <button class="btn" @click="" name="+">+</button>
+        <button class="btn" @click="" name="-">-</button>
+        <button class="btn" @click="" name="/">/</button>
+        <button class="btn" @click="" name="%">%</button>
+        <button class="btn" @click="" name=".">.</button>
+        <button class="btn" @click="" name="=">=</button>
+        <button class="btn" @click="" name="C">C</button>
 
-        <input type="text" />
-  <RouterView />
+        <input type="text" value="{{res}}" />
 </template>
 
 
@@ -40,24 +59,11 @@ header {
   max-height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
 nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
 }
 
 nav a {
@@ -66,25 +72,12 @@ nav a {
   border-left: 1px solid var(--color-border);
 }
 
-nav a:first-of-type {
-  border: 0;
-}
 
 @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
   }
 
   nav {
