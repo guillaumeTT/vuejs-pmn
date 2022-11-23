@@ -2,13 +2,20 @@
 export default {
   data() {
     return {
-      foo:"tert",
+      variable : {
+        foo:"tert",
       res:"",
+      btn:"1",
+      }
+        
+      
     }
   },
   methods: {
-    concat(){
-
+    test : function(e){
+      const btnVal = e.target.value;
+      alert(""+e.target.value);
+      return btnVal;
     },
     greet(event) {
     // `this` inside methods points to the current active instance
@@ -25,13 +32,13 @@ export default {
 <template>
       <h1>Calcul</h1>
     <div id="app">
-        {{ foo }}
-        <button class="btn" @click="greet" name="1">1</button>
-        <button class="btn" @click="2" name="2">2</button>
+        {{ variable.foo }}
+        <button class="btn" v-on:click="greet" name="1">1</button>
+        <input type="button" class="btn" v-model="all" data="text" />
         <button class="btn" @click="3" name="3">3</button>
         </div>
         <div>
-        <button class="btn" @click="4" name="4">4</button>
+        <button class="btn" @click="$test(4)" name="4">4</button>
         <button class="btn" @click="5" name="5">5</button>
         <button class="btn" @click="6" name="6">6</button>
         </div>
@@ -48,8 +55,8 @@ export default {
         <button class="btn" @click="" name=".">.</button>
         <button class="btn" @click="" name="=">=</button>
         <button class="btn" @click="" name="C">C</button>
-
-        <input type="text" value="{{res}}" />
+        <p>Le message est : {{ variable.btn }}</p>
+        <input type="text" :value="all" />
 </template>
 
 
